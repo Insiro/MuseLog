@@ -9,7 +9,7 @@ type IRouter interface {
 
 func ApiRoute(r IRouter) *gin.RouterGroup {
 	g := r.Group("/api")
-	g.GET("", func(c *gin.Context) {
+	g.GET("/halo", func(c *gin.Context) {
 		c.JSON(200, gin.H{"msg": "halo"})
 	})
 	return g
