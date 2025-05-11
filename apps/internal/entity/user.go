@@ -4,20 +4,24 @@ import "time"
 import "your_spotify/internal/constant/enum"
 
 type User struct {
-	Id              int        `gorm:"primaryKey:autoIncrement"`
-	UserId          string     `gorm:"uniqueIndex;size:200" json:"userId"`
-	UserName        string     `gorm:"size:200" json:"userName"`
-	Admin           bool       `gorm:"default:false" json:"admin"`
-	SpotifyId       *string    `gorm:"size:200;index" json:"spotifyId"`
-	ExpireIn        int        `gorm:"type:int;default:0" json:"expireIn"`
-	AccessToken     *string    `gorm:"size:200;default:null" json:"accessToken"`
-	RefreshToken    *string    `gorm:"size:200;default:null" json:"refreshToken"`
-	LastTimestamp   int64      `gorm:"default:0" json:"lastTimestamp"`
-	LastImport      *string    `gorm:"default:null" json:"lastImport"`
-	PublicToken     *string    `gorm:"size:200;default:null;index" json:"publicToken"`
-	FirstListenedAt *time.Time `gorm:"type:datetime;default:null" json:"firstListenedAt"`
-	//tracks: Schema.Types.ObjectId[];
-	Settings *UserSetting `json:"settings"`
+	Id              int          `gorm:"primaryKey:autoIncrement"`
+	UserId          string       `gorm:"uniqueIndex;size:200" json:"userId"`
+	UserName        string       `gorm:"size:200" json:"userName"`
+	Admin           bool         `gorm:"default:false" json:"admin"`
+	SpotifyId       *string      `gorm:"size:200;index" json:"spotifyId"`
+	ExpireIn        int          `gorm:"type:int;default:0" json:"expireIn"`
+	AccessToken     *string      `gorm:"size:200;default:null" json:"accessToken"`
+	RefreshToken    *string      `gorm:"size:200;default:null" json:"refreshToken"`
+	LastTimestamp   int64        `gorm:"default:0" json:"lastTimestamp"`
+	LastImport      *string      `gorm:"default:null" json:"lastImport"`
+	PublicToken     *string      `gorm:"size:200;default:null;index" json:"publicToken"`
+	FirstListenedAt *time.Time   `gorm:"type:datetime;default:null" json:"firstListenedAt"`
+	Settings        *UserSetting `json:"settings"`
+}
+
+type UserTrack struct {
+	UserId  int
+	TrackId string
 }
 
 type UserSetting struct {
