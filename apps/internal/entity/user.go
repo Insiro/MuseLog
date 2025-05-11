@@ -4,8 +4,7 @@ import "time"
 import "your_spotify/internal/constant/enum"
 
 type User struct {
-	Id              int          `gorm:"primaryKey:autoIncrement"`
-	UserId          string       `gorm:"uniqueIndex;size:200" json:"userId"`
+	Id              string       `gorm:"primaryKey;type:uuid"`
 	UserName        string       `gorm:"size:200" json:"userName"`
 	Admin           bool         `gorm:"default:false" json:"admin"`
 	SpotifyId       *string      `gorm:"size:200;index" json:"spotifyId"`

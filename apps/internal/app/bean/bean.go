@@ -6,9 +6,10 @@ import (
 )
 
 type Bean struct {
-	logger out.Logger
-	config Config
-	db     *gorm.DB
+	logger     out.Logger
+	config     Config
+	db         *gorm.DB
+	repository Repository
 }
 
 func (b Bean) Logger() out.Logger {
@@ -21,6 +22,10 @@ func (b Bean) Config() Config {
 
 func (b Bean) Db() *gorm.DB {
 	return b.db
+}
+
+func (b Bean) Repository() Repository {
+	return b.repository
 }
 
 var bean *Bean
